@@ -12,8 +12,8 @@ import com.route.products_listtask_implementation.databinding.ProductItemBinding
 class ProductsAdapter (private var productsList:List<ProductsItem?>?)
     : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>(){
 
-    fun addList(myList:List<ProductsItem?>?){
-        productsList = myList
+    fun bindList(myList:List<ProductsItem?>?){
+        this.productsList = myList
         notifyDataSetChanged()
     }
     inner class ProductsViewHolder(val binding: ProductItemBinding)
@@ -22,13 +22,13 @@ class ProductsAdapter (private var productsList:List<ProductsItem?>?)
             binding.product = product
             binding.executePendingBindings()
             if (product?.price != null) {
-                binding.priceTxt.text = "EGP ${product?.price}"
+                binding.priceTxt.text = "EGP ${product?.price ?: 0}"
                 binding.oldPriceTxt.isVisible = false
-                binding.oldPriceTxt.text = "EGP ${product?.price}"
+                binding.oldPriceTxt.text = "EGP ${product?.price ?: 0}"
                 binding.oldPriceTxt.paintFlags =
                     binding.oldPriceTxt.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             } else {
-                binding.priceTxt.text = "EGP ${product?.price}"
+                binding.priceTxt.text = "EGP ${product?.price ?: 0}"
                 binding.oldPriceTxt.isVisible = false
             }
         }

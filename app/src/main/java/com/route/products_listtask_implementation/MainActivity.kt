@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.route.products_listtask_implementation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private val productsAdapter = ProductsAdapter()
+    private val productsAdapter = ProductsAdapter(listOf())
     private lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +21,6 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        //binding.productsRv.adapter = productsAdapter
+        binding.productsRv.adapter = productsAdapter
     }
 }
