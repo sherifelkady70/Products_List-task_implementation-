@@ -1,7 +1,9 @@
 package com.route.products_listtask_implementation
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.route.domain.model.ProductsItem
@@ -14,8 +16,22 @@ class ProductsAdapter (private var productsList:List<ProductsItem?>?)
         productsList = myList
         notifyDataSetChanged()
     }
-    class ProductsViewHolder(val binding: ProductItemBinding) : RecyclerView.ViewHolder(binding.root){
-
+    inner class ProductsViewHolder(val binding: ProductItemBinding)
+        : RecyclerView.ViewHolder(binding.root){
+        fun bind(product:ProductsItem?){
+            binding.product = product
+            binding.executePendingBindings()
+            if (product?.price != null) {
+                binding.priceTxt.text = "EGP ${product?.price}"
+                binding.oldPriceTxt.isVisible = false
+                binding.oldPriceTxt.text = "EGP ${product?.price}"
+                binding.oldPriceTxt.paintFlags =
+                    binding.oldPriceTxt.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            } else {
+                binding.priceTxt.text = "EGP ${product?.price}"
+                binding.oldPriceTxt.isVisible = false
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
@@ -28,9 +44,10 @@ class ProductsAdapter (private var productsList:List<ProductsItem?>?)
         )
     }
 
-    override fun getItemCount(): Int = productsList!!.size
+    override fun getItemCount(): Int = productsList?.size ?: 0
 
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val product = productsList!![position]
+        holder.bind(product)
     }
 }

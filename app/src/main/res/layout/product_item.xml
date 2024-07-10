@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="product"
+            type="com.route.domain.model.ProductsItem" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -25,7 +28,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:src="@drawable/nike_air_jordon"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                app:url="@{product.thumbnail}"/>
 
             <ImageView
                 android:id="@+id/wishlist_icon"
@@ -50,7 +54,8 @@
                 android:layout_marginBottom="3dp"
                 android:textColor="@color/black"
                 android:textStyle="normal"
-                android:text="Nike Air Jordan"
+                android:text="@{product.title}"
+                tools:text="Nike Air Jordan"
                 android:textSize="9sp" />
 
             <TextView
@@ -64,7 +69,8 @@
                 android:layout_marginBottom="3dp"
                 android:textColor="@color/black"
                 android:textStyle="normal"
-                android:text="Nike shoes fixable"
+                android:text="@{product.description}"
+                tools:text="Nike shoes fixable"
                 android:textSize="8sp" />
 
             <TextView
@@ -78,7 +84,8 @@
                 android:layout_marginBottom="3dp"
                 android:textColor="@color/black"
                 android:textStyle="normal"
-                android:text="EGP 1,100"
+                android:text="@{product.description}"
+                tools:text="EGP 1,100"
                 android:textSize="8sp" />
 
             <TextView
