@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/route_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/route_logo"
+        android:padding="15dp"
+        android:scaleType="fitStart"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
