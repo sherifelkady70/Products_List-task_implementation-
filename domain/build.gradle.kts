@@ -40,4 +40,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    //Kotlin Flows
+     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
 }
