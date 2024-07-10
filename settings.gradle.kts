@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Products_List(task_implementation)"
 include(":app")
- 
+include(":domain")
+include(":data")

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="110dp"
@@ -21,15 +22,16 @@
             android:scaleType="centerCrop"
             />
         <ImageView
-            android:id="@+id/heart_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="3dp"
+            android:id="@+id/wishlist_icon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="5dp"
             android:padding="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/white_background"
-            android:src="@drawable/ic_add"/>
+            android:src="@drawable/add_to_wishlist_selector" />
         <TextView
             android:id="@+id/title_txt"
             android:layout_width="match_parent"
