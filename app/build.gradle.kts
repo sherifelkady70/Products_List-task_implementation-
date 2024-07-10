@@ -54,4 +54,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation (libs.shimmer.android)
+    implementation ("com.squareup.picasso:picasso:2.8")
+
 }

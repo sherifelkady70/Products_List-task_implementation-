@@ -1,5 +1,6 @@
 package com.route.products_listtask_implementation
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
@@ -18,7 +19,13 @@ class ProductsAdapter (private var productsList:List<ProductsItem?>?)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
-        return ProductsViewHolder()
+        return ProductsViewHolder(
+            ProductItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int = productsList!!.size
