@@ -1,10 +1,10 @@
 package com.route.data
 
 import com.google.gson.Gson
+import com.route.data.api.model.ProductResponse
 import com.route.domain.common.InternetConnection
 import com.route.domain.common.ServerErrorDC
 import retrofit2.HttpException
-import retrofit2.Response
 import java.io.IOException
 
 suspend fun <T>executeAPI(callAPI : suspend ()->T) : T {
@@ -14,7 +14,7 @@ suspend fun <T>executeAPI(callAPI : suspend ()->T) : T {
     }catch (ex: HttpException) {
         if(ex.code() in 400..600){
             val serverResponse = ex.response()?.errorBody()?.string()
-            val response = Gson().fromJson<Response<Any>>(serverResponse,Response::class.java)
+            val response = Gson().fromJson<ProductResponse<Any>>(serverResponse,ProductResponse::class.java)
             throw ServerErrorDC(response.statusMsg,response.message,ex)
         }
         throw ex
