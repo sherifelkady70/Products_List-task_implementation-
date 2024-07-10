@@ -1,5 +1,7 @@
 package com.route.data.api.model
 
+import com.route.domain.model.ProductsItem
+
 data class ProductsItem(
     val images: List<String?>? = null,
     val thumbnail: String? = null,
@@ -23,4 +25,17 @@ data class ProductsItem(
     val sku: String? = null,
     val dimensions: Dimensions? = null,
     val brand: String? = null
-)
+){
+    fun toProductsItem() : ProductsItem{
+        return ProductsItem(
+            images = images,
+            thumbnail = thumbnail,
+            rating = rating,
+            description = description,
+            title = title,
+            price = price,
+            id = id,
+            category = category
+        )
+    }
+}
