@@ -11,6 +11,7 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:foregroundGravity="center"
         tools:context=".MainActivity">
 
         <ImageView
@@ -50,6 +51,7 @@
             android:id="@+id/products_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:foregroundGravity="center"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/search_view"
             app:layout_constraintBottom_toBottomOf="parent"
