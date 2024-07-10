@@ -8,7 +8,7 @@ import com.route.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class ProductsRepository @Inject constructor(
+class ProductsRepositoryImpl @Inject constructor(
     private val datasource : ProductsOnlineDataSource
 ): ProductsRepository {
     override suspend fun getProducts(): Flow<Resource<List<ProductsItem?>?>> {
