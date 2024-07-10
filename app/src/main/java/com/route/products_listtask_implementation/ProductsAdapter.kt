@@ -2,10 +2,12 @@ package com.route.products_listtask_implementation
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
+import com.route.products_listtask_implementation.databinding.ProductItemBinding
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>(){
 
-    class ProductsViewHolder() : RecyclerView.ViewHolder(){
+    class ProductsViewHolder(val binding: ProductItemBinding) : RecyclerView.ViewHolder(binding.root){
 
     }
 

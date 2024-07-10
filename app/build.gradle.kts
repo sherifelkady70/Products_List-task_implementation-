@@ -4,6 +4,10 @@ plugins {
 }
 
 android {
+
+    dataBinding{
+        enable=true
+    }
     namespace = "com.route.products_listtask_implementation"
     compileSdk = 34
 
