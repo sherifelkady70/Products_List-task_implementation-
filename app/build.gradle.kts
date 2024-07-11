@@ -53,12 +53,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
+    //shimmer
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
+    //picasso
     implementation ("com.squareup.picasso:picasso:2.8")
-
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-compiler:2.51.1")
 
+    //androidx life cycle
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.8.3")
 }

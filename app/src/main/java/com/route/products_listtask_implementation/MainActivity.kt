@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner=this
         viewModel.getProductsList()
         viewModel.productsList.observe(this){
+            binding.shimmerEffect.showShimmer(true)
             productsAdapter.bindList(it)
             Log.d("in main activity","$it")
         }

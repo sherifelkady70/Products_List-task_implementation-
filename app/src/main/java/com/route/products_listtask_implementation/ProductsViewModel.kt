@@ -32,6 +32,7 @@ class ProductsViewModel @Inject constructor(
                     }
                     else ->{
                         extractViewMessage(resource).let {
+                            Log.d("in view model in extract message","$it")
                             viewMessage.postValue(it)
                         }
                     }

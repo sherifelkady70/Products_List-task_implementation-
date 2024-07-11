@@ -1,5 +1,6 @@
 package com.route.data.repository
 
+import android.util.Log
 import com.route.data.data_source.contract.ProductsOnlineDataSource
 import com.route.data.toFlow
 import com.route.domain.model.ProductsItem
@@ -13,6 +14,8 @@ class ProductsRepositoryImpl @Inject constructor(
 ): ProductsRepository {
     override suspend fun getProducts(): Flow<Resource<List<ProductsItem?>?>> {
         return toFlow {
+            Log.d("in repository","${datasource.getProducts()?.size}")
+            Log.d("in repository","${datasource.getProducts()}")
             datasource.getProducts()
         }
     }
