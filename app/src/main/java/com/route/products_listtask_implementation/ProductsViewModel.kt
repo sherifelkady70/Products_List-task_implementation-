@@ -20,7 +20,7 @@ class ProductsViewModel @Inject constructor(
 ): ViewModel() {
 
     val loading = MutableLiveData<Boolean>()
-    private val viewMessage = MutableLiveData<ViewMessage>()
+     val viewMessage = MutableLiveData<ViewMessage>()
     val productsList = MutableLiveData<List<ProductsItem?>?>()
 
     fun getProductsList(){

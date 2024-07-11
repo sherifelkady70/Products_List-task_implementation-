@@ -1,7 +1,6 @@
 package com.route.products_listtask_implementation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -9,8 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.findViewTreeLifecycleOwner
-import com.route.domain.model.ProductsItem
+import com.route.products_listtask_implementation.adapter.ProductsAdapter
 import com.route.products_listtask_implementation.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,12 +38,13 @@ class MainActivity : AppCompatActivity() {
         binding.shimmerEffect.isVisible = true
         binding.shimmerEffect.startShimmer()
     }
-    private fun observeOnData(){
+    private fun observeOnData() {
         viewModel.getProductsList()
-        viewModel.productsList.observe(this){
+        viewModel.productsList.observe(this) {
             productsAdapter.bindList(it)
             binding.shimmerEffect.isVisible = false
             binding.shimmerEffect.stopShimmer()
         }
     }
+
 }

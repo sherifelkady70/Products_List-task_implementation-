@@ -1,4 +1,4 @@
-package com.route.products_listtask_implementation
+package com.route.products_listtask_implementation.adapter
 
 import android.graphics.Paint
 import android.util.Log
