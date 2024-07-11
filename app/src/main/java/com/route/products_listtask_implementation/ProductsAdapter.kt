@@ -23,7 +23,7 @@ class ProductsAdapter (private var productsList:List<ProductsItem?>?=null)
             binding.executePendingBindings()
             if (product?.price != null) {
                 binding.priceTxt.text = "EGP ${product?.price.toString() }"
-                binding.oldPriceTxt.isVisible = false
+                //binding.oldPriceTxt.isVisible = false
                 binding.oldPriceTxt.text = "EGP ${product?.price.toString() }"
                 binding.oldPriceTxt.paintFlags =
                     binding.oldPriceTxt.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
