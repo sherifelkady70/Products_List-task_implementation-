@@ -7,8 +7,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.findViewTreeLifecycleOwner
+import com.route.domain.model.ProductsItem
 import com.route.products_listtask_implementation.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,11 +33,20 @@ class MainActivity : AppCompatActivity() {
         binding.productsRv.adapter = productsAdapter
         binding.lifecycleOwner=this
         viewModel.getProductsList()
+        binding.shimmerEffect.isVisible = true
+        binding.shimmerEffect.startShimmer()
         viewModel.productsList.observe(this){
-            binding.shimmerEffect.showShimmer(true)
+            if(it==null){
+                productsAdapter.bindList(productsList)
+            }
             productsAdapter.bindList(it)
             Log.d("in main activity","$it")
         }
 
     }
+
+    val productsList =
+        listOf(ProductsItem(price = "1100", title = "shoes", description = "try to run"),
+            ProductsItem(price = "1100", title = "shoes", description = "try to run"),
+                ProductsItem(price = "1100", title = "shoes", description = "try to run") )
 }

@@ -27,7 +27,7 @@ class ProductsViewModel @Inject constructor(
             productsUseCase().collect{ resource->
                 when(resource){
                     is Resource.Success ->{
-                        Log.d("in view model","${resource.data}")
+                        Log.d("response is success in view model","${resource.data}")
                         productsList.postValue(resource.data)
                     }
                     else ->{

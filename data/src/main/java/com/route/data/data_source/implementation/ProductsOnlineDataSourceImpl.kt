@@ -12,8 +12,9 @@ class ProductsOnlineDataSourceImpl @Inject constructor(
 ): ProductsOnlineDataSource {
     override suspend fun getProducts(): List<ProductsItem?>? {
         Log.d("before execute API fun in data source","${webService.getProducts().data}")
-        val response = executeAPI { webService.getProducts() }
-        Log.d("in data source","${response.data}")
-        return response.data
+        val response = executeAPI { webService.getProducts().data?.map {
+            it?.toProductsItem()
+        } }
+        return response
     }
 }

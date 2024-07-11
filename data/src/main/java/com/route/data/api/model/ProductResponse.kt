@@ -1,7 +1,5 @@
 package com.route.data.api.model
 
-import com.google.gson.annotations.SerializedName
-
 data class ProductResponse<T>(
     val total: Int? = null,
     val limit: Int? = null,
