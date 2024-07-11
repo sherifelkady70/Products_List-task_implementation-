@@ -10,6 +10,7 @@ import com.route.products_listtask_implementation.utils.ViewMessage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import androidx.lifecycle.viewModelScope
 import com.route.domain.model.ProductsItem
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,16 +24,14 @@ class ProductsViewModel @Inject constructor(
     val productsList = MutableLiveData<List<ProductsItem?>?>()
 
     fun getProductsList(){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO){
             productsUseCase().collect{ resource->
                 when(resource){
                     is Resource.Success ->{
-                        Log.d("response is success in view model","${resource.data}")
                         productsList.postValue(resource.data)
                     }
                     else ->{
                         extractViewMessage(resource).let {
-                            Log.d("in view model in extract message","$it")
                             viewMessage.postValue(it)
                         }
                     }
@@ -40,7 +39,7 @@ class ProductsViewModel @Inject constructor(
             }
         }
     }
-    fun <T>extractViewMessage(resource : Resource<T>) : ViewMessage? {
+    private fun <T>extractViewMessage(resource : Resource<T>) : ViewMessage? {
         return when(resource) {
             is Resource.Fail -> {
                 when(resource.error){

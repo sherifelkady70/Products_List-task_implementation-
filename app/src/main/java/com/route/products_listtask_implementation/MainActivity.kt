@@ -30,17 +30,22 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.productsRv.adapter = productsAdapter
         binding.lifecycleOwner=this
-        viewModel.getProductsList()
+        initViews()
+        observeOnData()
+    }
+
+    private fun initViews(){
+        binding.productsRv.adapter = productsAdapter
         binding.shimmerEffect.isVisible = true
         binding.shimmerEffect.startShimmer()
+    }
+    private fun observeOnData(){
+        viewModel.getProductsList()
         viewModel.productsList.observe(this){
             productsAdapter.bindList(it)
             binding.shimmerEffect.isVisible = false
             binding.shimmerEffect.stopShimmer()
         }
-
     }
-
 }
