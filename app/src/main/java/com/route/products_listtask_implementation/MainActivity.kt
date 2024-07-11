@@ -35,16 +35,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.getProductsList()
         binding.shimmerEffect.isVisible = true
         binding.shimmerEffect.startShimmer()
-       // productsAdapter.bindList(productsList)
         viewModel.productsList.observe(this){
             productsAdapter.bindList(it)
             Log.d("in main activity","$it")
         }
 
     }
-
-    private val productsList =
-        listOf(ProductsItem(price = "1100", title = "shoes", description = "try to run"),
-            ProductsItem(price = "1100", title = "shoes", description = "try to run"),
-                ProductsItem(price = "1100", title = "shoes", description = "try to run") )
 }
