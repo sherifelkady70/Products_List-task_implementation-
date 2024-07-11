@@ -11,13 +11,13 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:foregroundGravity="center"
         tools:context=".MainActivity">
 
         <ImageView
             android:id="@+id/route_logo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/todo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/route_logo"
@@ -51,14 +51,15 @@
             android:id="@+id/products_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:foregroundGravity="center"
+            android:layout_marginHorizontal="10dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/search_view"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            tools:listitem="@layout/product_item"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="62dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_view"
+            app:spanCount="2"
+            android:paddingStart="20dp"
+            tools:listitem="@layout/product_item"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
