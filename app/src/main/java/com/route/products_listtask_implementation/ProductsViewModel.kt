@@ -1,20 +1,42 @@
 package com.route.products_listtask_implementation
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.route.domain.common.InternetConnection
 import com.route.domain.use_case.ProductsUseCase
 import com.route.domain.utils.Resource
 import com.route.products_listtask_implementation.utils.ViewMessage
 import dagger.hilt.android.lifecycle.HiltViewModel
+import androidx.lifecycle.viewModelScope
+import com.route.domain.model.ProductsItem
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ProductsViewModel @Inject constructor(
-    private val usecase : ProductsUseCase
+    private val productsUseCase : ProductsUseCase
 ): ViewModel() {
 
+    val loading = MutableLiveData<Boolean>()
+    val viewMessage = MutableLiveData<ViewMessage>()
+    val productsList = MutableLiveData<List<ProductsItem?>?>()
 
-
+    fun getProductsList(){
+        viewModelScope.launch {
+            productsUseCase().collect{ resource->
+                when(resource){
+                    is Resource.Success ->{
+                        productsList.postValue(resource.data)
+                    }
+                    else ->{
+                        extractViewMessage(resource).let {
+                            viewMessage.postValue(it)
+                        }
+                    }
+                }
+            }
+        }
+    }
     fun <T>extractViewMessage(resource : Resource<T>) : ViewMessage? {
         return when(resource) {
             is Resource.Fail -> {

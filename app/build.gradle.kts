@@ -54,10 +54,11 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // implementation (libs.shimmer.android)
     implementation ("com.squareup.picasso:picasso:2.8")
 
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-compiler:2.51.1")
+
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.8.3")
 }
