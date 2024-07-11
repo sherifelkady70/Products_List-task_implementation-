@@ -33,7 +33,7 @@ data class ProductsItem(
             rating = rating,
             description = description,
             title = title,
-            price = price,
+            price = price.toString(),
             id = id,
             category = category
         )

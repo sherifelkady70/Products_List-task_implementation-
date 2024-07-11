@@ -1,4 +1,4 @@
-package com.route.products_listtask_implementation
+package com.route.products_listtask_implementation.utils
 
 import com.route.domain.model.ProductsItem
 
