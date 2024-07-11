@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
             productsAdapter.bindList(it)
             binding.shimmerEffect.isVisible = false
             binding.shimmerEffect.stopShimmer()
-            Log.d("in main activity","$it")
         }
 
     }
