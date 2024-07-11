@@ -1,7 +1,7 @@
 package com.route.data
 
 import com.google.gson.Gson
-import com.route.data.api.new_models.NewResponse
+import com.route.data.api.models.NewResponse
 import com.route.domain.common.InternetConnection
 import com.route.domain.common.ServerErrorDC
 import com.route.domain.utils.Resource

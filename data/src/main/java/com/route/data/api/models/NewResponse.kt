@@ -1,4 +1,4 @@
-package com.route.data.api.new_models
+package com.route.data.api.models
 
 
 data class NewResponse(
