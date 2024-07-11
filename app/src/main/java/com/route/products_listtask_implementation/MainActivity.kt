@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner=this
         initViews()
         observeOnData()
+
     }
 
     private fun initViews(){
