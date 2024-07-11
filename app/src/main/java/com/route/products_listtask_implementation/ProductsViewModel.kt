@@ -1,5 +1,6 @@
 package com.route.products_listtask_implementation
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.route.domain.common.InternetConnection
@@ -18,7 +19,7 @@ class ProductsViewModel @Inject constructor(
 ): ViewModel() {
 
     val loading = MutableLiveData<Boolean>()
-    val viewMessage = MutableLiveData<ViewMessage>()
+    private val viewMessage = MutableLiveData<ViewMessage>()
     val productsList = MutableLiveData<List<ProductsItem?>?>()
 
     fun getProductsList(){
@@ -26,6 +27,7 @@ class ProductsViewModel @Inject constructor(
             productsUseCase().collect{ resource->
                 when(resource){
                     is Resource.Success ->{
+                        Log.d("in view model","${resource.data}")
                         productsList.postValue(resource.data)
                     }
                     else ->{
