@@ -1,10 +1,9 @@
 package com.route.data.api
 
-import com.route.data.api.model.ProductResponse
-import com.route.data.api.model.ProductsItem
+import com.route.data.api.new_models.NewResponse
 import retrofit2.http.GET
 
 interface ProductsWebService {
     @GET("/products")
-    suspend fun getProducts() : ProductResponse<List<ProductsItem?>?>
+    suspend fun getProducts() : NewResponse
 }
