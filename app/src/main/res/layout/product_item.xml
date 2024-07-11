@@ -119,7 +119,7 @@
                 android:layout_marginBottom="3dp"
                 android:textColor="@color/black"
                 android:textStyle="normal"
-                tools:text="Review : "
+                android:text="Review : "
                 android:textSize="7sp" />
             <TextView
                 android:id="@+id/reting_txt"
