@@ -19,7 +19,7 @@ class ProductsViewModel @Inject constructor(
 ): ViewModel() {
 
     val loading = MutableLiveData<Boolean>()
-     val viewMessage = MutableLiveData<ViewMessage>()
+    val viewMessage = MutableLiveData<ViewMessage>()
     val productsList = MutableLiveData<List<ProductsItem?>?>()
 
     fun getProductsList(){
@@ -30,13 +30,13 @@ class ProductsViewModel @Inject constructor(
                         productsList.postValue(resource.data)
                     }
                     else ->{
-                        extractViewMessage(resource)
+                        handleResource(resource)
                     }
                 }
             }
         }
     }
-    private fun <T>extractViewMessage(resource : Resource<T>){
+    private fun <T>handleResource(resource : Resource<T>){
          when(resource) {
             is Resource.Fail -> {
                 when(resource.error){

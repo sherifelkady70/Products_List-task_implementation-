@@ -47,5 +47,11 @@ class MainActivity : AppCompatActivity() {
             binding.shimmerEffect.isVisible = false
             binding.shimmerEffect.stopShimmer()
         }
+        viewModel.viewMessage.observe(this){
+
+        }
+        viewModel.loading.observe(this){
+
+        }
     }
 }
