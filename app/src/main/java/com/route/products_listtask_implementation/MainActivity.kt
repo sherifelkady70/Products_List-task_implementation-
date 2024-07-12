@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             binding.shimmerEffect.stopShimmer()
         }
         viewModel.viewMessage.observe(this){
-
+            showDialog(it.toString())
         }
         viewModel.loading.observe(this){
 
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun showDialog(
+    private fun showDialog(
         title: String? = null,
         message: String? = null,
         posBtnTitle: String? = null,
