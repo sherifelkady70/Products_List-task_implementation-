@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.getProductsList()
         viewModel.productsList.observe(this) {
             productsAdapter.bindList(it)
+            hideLoading()
             binding.shimmerEffect.isVisible = false
             binding.shimmerEffect.stopShimmer()
         }
@@ -54,7 +55,12 @@ class MainActivity : AppCompatActivity() {
             showDialog(it.toString())
         }
         viewModel.loading.observe(this){
-
+            if(it==true) {
+                showLoading()
+            }
+            else{
+                hideLoading()
+            }
         }
     }
 
