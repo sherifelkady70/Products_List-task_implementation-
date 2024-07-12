@@ -1,5 +1,7 @@
 package com.route.products_listtask_implementation
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -53,5 +55,41 @@ class MainActivity : AppCompatActivity() {
         viewModel.loading.observe(this){
 
         }
+    }
+
+
+    fun showDialog(
+        title: String? = null,
+        message: String? = null,
+        posBtnTitle: String? = null,
+        onPosBtnClick: (() -> Unit)? = null,
+        onNegBtnClick: (() -> Unit)? = null,
+        negBtnTitle: String? = null,
+
+
+        ) {
+        val myDialog = AlertDialog.Builder(this)
+        myDialog.setTitle(title)
+        myDialog.setMessage(message)
+        posBtnTitle.let {
+            myDialog.setPositiveButton(posBtnTitle,
+                object : DialogInterface.OnClickListener{
+                    override fun onClick(dialog: DialogInterface?, which: Int) {
+                        dialog?.dismiss()
+                        onPosBtnClick?.invoke()
+                    }
+
+                })
+        }
+        negBtnTitle.let {
+            myDialog.setNegativeButton(negBtnTitle
+            ) { dialog, which ->
+                dialog?.dismiss()
+                onNegBtnClick?.invoke()
+            }
+        }
+
+        myDialog.create().show()
+
     }
 }
