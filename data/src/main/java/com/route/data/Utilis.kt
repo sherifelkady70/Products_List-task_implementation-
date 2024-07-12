@@ -1,7 +1,7 @@
 package com.route.data
 
 import com.google.gson.Gson
-import com.route.data.api.models.NewResponse
+import com.route.data.api.models.ProductsResponse
 import com.route.domain.common.InternetConnection
 import com.route.domain.common.ServerErrorDC
 import com.route.domain.utils.Resource
@@ -20,7 +20,7 @@ suspend fun <T>executeAPI(callAPI : suspend ()->T) : T {
     }catch (ex: HttpException) {
         if(ex.code() in 400..600){
             val serverResponse = ex.response()?.errorBody()?.string()
-            val response = Gson().fromJson<NewResponse>(serverResponse,NewResponse::class.java)
+            val response = Gson().fromJson<ProductsResponse>(serverResponse,ProductsResponse::class.java)
             throw ServerErrorDC(response.toString(),response.toString(),ex)
         }
         throw ex

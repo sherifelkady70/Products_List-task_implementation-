@@ -1,15 +1,14 @@
 package com.route.products_listtask_implementation
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.route.domain.common.InternetConnection
+import com.route.domain.model.ProductsItem
 import com.route.domain.use_case.ProductsUseCase
 import com.route.domain.utils.Resource
 import com.route.products_listtask_implementation.utils.ViewMessage
 import dagger.hilt.android.lifecycle.HiltViewModel
-import androidx.lifecycle.viewModelScope
-import com.route.domain.model.ProductsItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -31,36 +30,37 @@ class ProductsViewModel @Inject constructor(
                         productsList.postValue(resource.data)
                     }
                     else ->{
-                        extractViewMessage(resource).let {
-                            viewMessage.postValue(it)
-                        }
+                        extractViewMessage(resource)
                     }
                 }
             }
         }
     }
-    private fun <T>extractViewMessage(resource : Resource<T>) : ViewMessage? {
-        return when(resource) {
+    private fun <T>extractViewMessage(resource : Resource<T>){
+         when(resource) {
             is Resource.Fail -> {
                 when(resource.error){
                     is InternetConnection -> {
-                        ViewMessage(
+                        viewMessage.postValue(ViewMessage(
                             resource.error.message
-                        )
+                        ))
                     }
                     else ->{
-                        ViewMessage(
+                        viewMessage.postValue(ViewMessage(
                             resource.error.localizedMessage
-                        )
+                        ))
                     }
                 }
             }
             is Resource.ServerError -> {
-                ViewMessage(
+                viewMessage.postValue(ViewMessage(
                     resource.message.serverError
-                )
+                ))
             }
-            else -> null
+             is Resource.Loading ->{
+                 loading.postValue(true)
+             }
+             else -> null
         }
     }
 

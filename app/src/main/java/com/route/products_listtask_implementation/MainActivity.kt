@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import com.route.domain.utils.Resource
 import com.route.products_listtask_implementation.adapter.ProductsAdapter
 import com.route.products_listtask_implementation.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
