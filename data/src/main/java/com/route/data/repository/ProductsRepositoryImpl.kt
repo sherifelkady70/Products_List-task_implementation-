@@ -14,8 +14,6 @@ class ProductsRepositoryImpl @Inject constructor(
 ): ProductsRepository {
     override suspend fun getProducts(): Flow<Resource<List<ProductsItem?>?>> {
         return toFlow {
-            Log.d("in repository","${datasource.getProducts()?.size}")
-            Log.d("in repository","${datasource.getProducts()}")
             datasource.getProducts()
         }
     }

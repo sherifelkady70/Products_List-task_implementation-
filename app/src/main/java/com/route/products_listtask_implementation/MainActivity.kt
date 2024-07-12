@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import com.route.domain.utils.Resource
 import com.route.products_listtask_implementation.adapter.ProductsAdapter
 import com.route.products_listtask_implementation.databinding.ActivityMainBinding
+import com.route.products_listtask_implementation.utils.ViewMessage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             binding.shimmerEffect.stopShimmer()
         }
         viewModel.viewMessage.observe(this){
-            showDialog(it.toString())
+            showDialog(it.title,it.message)
         }
         viewModel.loading.observe(this){
             if(it==true) {

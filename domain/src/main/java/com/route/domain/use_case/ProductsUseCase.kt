@@ -11,7 +11,6 @@ class ProductsUseCase @Inject constructor(
     private val productsRepository: ProductsRepository,
 ){
     suspend operator fun invoke() : Flow<Resource<List<ProductsItem?>?>> {
-        Log.d("in use case","${productsRepository.getProducts()}")
         return productsRepository.getProducts()
     }
 }
