@@ -20,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val productsAdapter = ProductsAdapter()
     private lateinit var binding : ActivityMainBinding
+    private var dialog : AlertDialog?=null
     private val viewModel : ProductsViewModel by viewModels<ProductsViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +59,15 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    private fun showLoading(){
+        val builder = AlertDialog.Builder(this)
+        builder.setView(R.layout.loading)
+        dialog = builder.create()
+        dialog?.show()
+    }
+    private fun hideLoading(){
+        dialog?.dismiss()
+    }
     private fun showDialog(
         title: String? = null,
         message: String? = null,
