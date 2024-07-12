@@ -23,3 +23,9 @@
     <td><img src="IMG-20240711-WA0013.jpg" alt="Image 1" width="200" height="350"></td>
   </tr>
 </table>
+<table>
+  <tr>
+    <td><img src="view.jpg" alt="Image 1" width="200" height="350"></td>
+    <td><img src="viewmessage_eedf0d40.jpg" alt="Image 1" width="200" height="350"></td>
+  </tr>
+</table>
