@@ -5,6 +5,8 @@
      * MVVM.
      * Repository Pattern.
      * Hilt.
+     * Coroutines
+     * Flows
  
        
   [Video from Run](https://drive.google.com/drive/folders/11KCxOYXjLtjSsYjoWtBG5x-NyW4EQdFy?usp=drive_link)
