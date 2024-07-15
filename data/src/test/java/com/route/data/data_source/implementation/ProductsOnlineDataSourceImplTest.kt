@@ -6,6 +6,7 @@ import com.route.data.api.models.ProductsItem
 import com.route.data.api.models.ProductsResponse
 import io.mockk.coEvery
 import io.mockk.mockk
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
@@ -19,10 +20,15 @@ class ProductsOnlineDataSourceImplTest{
         datasource = ProductsOnlineDataSourceImpl(webService)
     }
     @Test
-    fun `get list of products when call` () {
-        val productsResponse = ProductsResponse()
+    fun `get list of products when call` () = runTest {
+        val productsResponse = ProductsResponse(
+            products = listOf(
+                ProductsItem(id = 1), ProductsItem(id = 1), ProductsItem(id = 1)
+            )
+        )
         //fake behavior
-        val response = coEvery { webService.getProducts()} returns productsResponse
-        datasource.getProducts()
+        coEvery { webService.getProducts()} returns productsResponse
+        val productsData = datasource.getProducts()
+        assert(productsData?.size==3)
     }
 }
