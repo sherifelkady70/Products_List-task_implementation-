@@ -45,7 +45,6 @@ class ProductsAdapter (private var productsList:List<ProductsItem?>?=null)
     }
 
     override fun getItemCount(): Int {
-        Log.d("in adapter ","${productsList?.size ?: 0}")
        return productsList?.size ?: 0
     }
 

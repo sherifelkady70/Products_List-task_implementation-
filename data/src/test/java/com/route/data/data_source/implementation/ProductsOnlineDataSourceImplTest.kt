@@ -5,6 +5,7 @@ import com.route.data.data_source.contract.ProductsOnlineDataSource
 import com.route.data.api.models.ProductsItem
 import com.route.data.api.models.ProductsResponse
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -12,7 +13,6 @@ import org.junit.Test
 
 class ProductsOnlineDataSourceImplTest{
     lateinit var datasource : ProductsOnlineDataSource
-    //fake object
     val webService = mockk<ProductsWebService>()
 
     @Before
@@ -26,9 +26,9 @@ class ProductsOnlineDataSourceImplTest{
                 ProductsItem(id = 1), ProductsItem(id = 1), ProductsItem(id = 1)
             )
         )
-        //fake behavior
         coEvery { webService.getProducts()} returns productsResponse
         val productsData = datasource.getProducts()
+        coVerify { webService.getProducts() }
         assert(productsData?.size==3)
     }
 }
